@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tweets', function(Blueprint $table) {
+        Schema::create('bookmarks', function(Blueprint $table) {
             $table->id();
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('post_id');
             $table->integer('user_id');
-            $table->string('content');
-            $table->string('image_url')->nullable();
-            $table->string('category')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tweets');
+        Schema::dropIfExists('bookmarks');
     }
 };
